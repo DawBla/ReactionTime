@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Reaction Time</string>
+    <string name="btn_start">Start</string>
+    <string name="tap_when_green">Tap when screen turns green</string>
+    <string name="tap_to_start">"Tap anywhere to start"</string>
+    <string name="tap_now">Tap now!</string>
+    <string name="success_1">"Your reaction time: "</string>
+    <string name="success_2">"ms\nTap to go again"</string>
+    <string name="fail_too_soon">"Too soon!\nTap to go again"</string>
 </resources>

@@ -31,41 +31,46 @@ public class SoloActivity extends AppCompatActivity {
 
         super.onUserInteraction();
         switch (gameState){
+            //Handle the setup
             case 1:
-                textSolo.setText("Tap anywhere to start");
+                textSolo.setText(R.string.tap_to_start);
                 textSolo.setTextColor(getResources().getColor(R.color.text_neutral_light));
                 layout.setBackgroundColor(getResources().getColor(R.color.bg_neutral_light));
                 gameState = 2;
                 break;
-
+            //Handle the game
             case 2:
-                textSolo.setText("Tap when screen turns green");
+                textSolo.setText(R.string.tap_when_green);
                 textSolo.setTextColor(getResources().getColor(R.color.text_neutral_light));
                 //Randomizing the delay
                 Random rand = new Random();
                 delay = rand.nextInt(5000);
                 delay += 1000;
                 //Change screen color after random delay
-                Runnable delayedRunnable = () -> {
-                    layout.setBackgroundColor(getResources().getColor(R.color.bg_tap_now));
-                    textSolo.setText("Tap now!");
-                    stopwatch.start();
+                Runnable delayedRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        layout.setBackgroundColor(getResources().getColor(R.color.bg_tap_now));
+                        textSolo.setText(R.string.tap_now);
+                        stopwatch.start();
+                    }
                 };
                 delayHandler.postDelayed(delayedRunnable, delay);
                 gameState = 3;
                 break;
-
+            //Handle result
             case 3:
                 if(stopwatch.isStarted()){
                     stopwatch.stop();
-                    String score = "Congratulations! \nYour reaction time: "+stopwatch.getTime()+"ms \nTap to go again";
+                    String score = getString(R.string.success_1)+stopwatch.getTime()+getString(R.string.success_2);
                     textSolo.setText(score);
                     textSolo.setTextColor(getResources().getColor(R.color.text_success));
                     layout.setBackgroundColor(getResources().getColor(R.color.bg_success));
+                    stopwatch.reset();
                 }
                 else{
                     delayHandler.removeCallbacksAndMessages(null);
-                    textSolo.setText("Too soon! \nTap to go again");
+                    textSolo.setText(R.string.fail_too_soon);
                     textSolo.setTextColor(getResources().getColor(R.color.text_fail));
                     layout.setBackgroundColor(getResources().getColor(R.color.bg_fail));
                 }
@@ -84,7 +89,7 @@ public class SoloActivity extends AppCompatActivity {
 
         TextView textSolo = findViewById(R.id.textSolo);
         ConstraintLayout layout = findViewById(R.id.layout_solo);
-        textSolo.setText("Tap anywhere to start");
+        textSolo.setText(R.string.tap_to_start);
         textSolo.setTextColor(getResources().getColor(R.color.text_neutral_light));
         layout.setBackgroundColor(getResources().getColor(R.color.bg_neutral_light));
         gameState = 2;
