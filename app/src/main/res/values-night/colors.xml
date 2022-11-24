@@ -13,8 +13,8 @@
     <color name="text_fail">#FFFAFAFA</color>
     <color name="text_success">#FFFAFAFA</color>
 
-    <!-- Light mode -->
-    <color name="bg_neutral">#FFFAFAFA</color>
-    <color name="text_neutral">#FF212121</color>
+    <!-- Dark mode -->
+    <color name="bg_neutral">#FF424242</color>
+    <color name="text_neutral">#FFFAFAFA</color>
 
 </resources>
